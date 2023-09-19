@@ -17,10 +17,17 @@ import org.springframework.context.ApplicationEvent;
 public class NewUserEvent extends ApplicationEvent {
     private EventType type;
     private String email;
+    private Long id;
 
     public NewUserEvent(String email, EventType type) {
         super(email);
         this.type = type;
         this.email = email;
+    }
+
+    public NewUserEvent( EventType type, Long id) {
+        super(id);
+        this.type = type;
+        this.id = id;
     }
 }

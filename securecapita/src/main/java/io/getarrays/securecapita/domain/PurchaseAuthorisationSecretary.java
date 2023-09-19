@@ -1,7 +1,6 @@
 package io.getarrays.securecapita.domain;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import jakarta.persistence.Lob;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,17 +17,11 @@ import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_DEFAULT;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonInclude(NON_DEFAULT)
-public class PurchaseRequests {
-    private Long id;;
-    private Long userId;
-    private String productName;
-    private Date date;
-    private String productCode;
-    private int Quantity;
-    private String receiverEmail;
-    private String signature;
-    private String fileName;
-    private String fileType;
-    @Lob
-    private byte[] data;
+public class PurchaseAuthorisationSecretary {
+
+private String name;
+//signature
+private Date date;
+
+
 }

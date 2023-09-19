@@ -7,5 +7,5 @@ package io.getarrays.securecapita.enumeration;
  * @since 8/28/2022
  */
 public enum RoleType {
-    ROLE_USER, ROLE_MANAGER, ROLE_ADMIN, ROLE_SYSADMIN
+    ROLE_USER, ROLE_FINANCE, ROLE_ADMINISTRATION, ROLE_SYSADMIN,ROLE_SECRETARY,ROLE_PROCUREMENT,ROLE_STORES
 }

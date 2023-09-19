@@ -83,16 +83,21 @@ public class UserRepositoryImpl implements UserRepository<User>, UserDetailsServ
         }
     }
 
-    @Override
-    public int getNumberOfPages(int pageSize) {
-        try {
-            int pageNumber = jdbc.queryForObject(SELECT_PAGE_NUMBER_QUERY, of("pageSize", pageSize), Integer.class);
-            return pageNumber;
-        }catch (Exception e) {
-            throw new RuntimeException(e.getMessage());
-        }
-    }
-
+//    @Override
+//    public int getNumberOfPages(int pageSize) {
+//        return 0;
+//    }
+//
+//    @Override
+//    public int getNumberOfPages(int pageSize) {
+//        try {
+//            int pageNumber = jdbc.queryForObject(SELECT_PAGE_NUMBER_QUERY, of("pageSize", pageSize), Integer.class);
+//            return pageNumber;
+//        }catch (Exception e) {
+//            throw new RuntimeException(e.getMessage());
+//        }
+//    }
+//
 
 
 

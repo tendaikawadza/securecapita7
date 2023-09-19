@@ -18,7 +18,7 @@ public interface UserRepository<T extends User> {
     /* Basic CRUD Operations */
     T create(T data);
 
-     int getNumberOfPages(int pageSize);
+//     int getNumberOfPages(int pageSize);
 
     T get(Long id);
 

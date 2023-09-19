@@ -35,12 +35,12 @@ public class UserServiceImpl implements UserService {
 
         return userRepository.delete(id);
     }
-    @Override
-    public int getNumberOfpgaes(int pageSize) {
-//        int totalNumberOfItems = size; // Replace with the actual total number of items
-//        int numberOfPages = (int) Math.ceil((double) totalNumberOfItems / pageSize);
-        return userRepository.getNumberOfPages(pageSize);
-    }
+//    @Override
+//    public int getNumberOfpgaes(int pageSize) {
+////        int totalNumberOfItems = size; // Replace with the actual total number of items
+////        int numberOfPages = (int) Math.ceil((double) totalNumberOfItems / pageSize);
+//        return userRepository.getNumberOfPages(pageSize);
+//    }
 
     @Override
     public UserDTO createUser(User user) {

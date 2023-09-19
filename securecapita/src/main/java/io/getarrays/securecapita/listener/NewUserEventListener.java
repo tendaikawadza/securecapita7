@@ -25,6 +25,6 @@ public class NewUserEventListener {
 
     @EventListener
     public void onNewUserEvent(NewUserEvent event) {
-        eventService.addUserEvent(event.getEmail(), event.getType(), getDevice(request), getIpAddress(request));
+        eventService.addUserEvent(event.getId(), event.getType(), getDevice(request), getIpAddress(request));
     }
 }

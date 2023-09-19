@@ -79,16 +79,17 @@ public class UserResource {
         return ResponseEntity.ok(user);
 
     }
-
+////, @RequestParam("pageSize") int pageSize//\
+    //,"pageSize", pageSize
 
     @GetMapping("/list")
-    public ResponseEntity<HttpResponse> listUsers(Authentication authentication, @RequestParam("pageSize") int pageSize) {
-        int totalPage = userService.getNumberOfpgaes(pageSize);
+    public ResponseEntity<HttpResponse> listUsers(Authentication authentication   ) {
+       // int totalPage = userService.getNumberOfpgaes(pageSize);
         // whate example pagination will follow.10 user pr
         return ResponseEntity.ok().body(
                 HttpResponse.builder()
                         .timeStamp(now().toString())
-                        .data(of("users", userService.list(),"pageSize", pageSize))
+                        .data(of("users", userService.list()))
                         .message("Users Retrieved")
                         .build()
         );
@@ -107,16 +108,16 @@ public class UserResource {
                        .statusCode(OK.value())
                        .build());
     }
-
-    @GetMapping("/pages")
-    public ResponseEntity<Integer> getNumberOfPages(@RequestParam("pageSize") int pageSize, @RequestParam("size") int size) {
-        int numberOfPages = userService.getNumberOfpgaes(pageSize);//            getNumberOfPages(pageSize, size);
-        // what requiremnet for respones sir??. i want to paginate users,any thing is ok,as long as it works
-        // for the query is only get total page for user sir need to adjust ok just do what you think works
-        // okay sir
-        // where ure api use for display list user sir
-        return ResponseEntity.ok(numberOfPages);
-    }
+//
+//    @GetMapping("/pages")
+//    public ResponseEntity<Integer> getNumberOfPages(@RequestParam("pageSize") int pageSize, @RequestParam("size") int size) {
+//        int numberOfPages = userService.getNumberOfpgaes(pageSize);//            getNumberOfPages(pageSize, size);
+//        // what requiremnet for respones sir??. i want to paginate users,any thing is ok,as long as it works
+//        // for the query is only get total page for user sir need to adjust ok just do what you think works
+//        // okay sir
+//        // where ure api use for display list user sir
+//        return ResponseEntity.ok(numberOfPages);
+//    }
     @PostMapping("/register")
     public ResponseEntity<HttpResponse> saveUser(@RequestBody @Valid User user) {
         UserDTO userDto = userService.createUser(user);
@@ -366,18 +367,19 @@ public class UserResource {
     }*/
 
     private UserDTO authenticate(String email, String password) {
+        UserDTO testUser = userService.getUserByEmail(email);
         try {
             if(null != userService.getUserByEmail(email)) {
-                publisher.publishEvent(new NewUserEvent(email, LOGIN_ATTEMPT));
+                publisher.publishEvent(new NewUserEvent( LOGIN_ATTEMPT,testUser.getId()));
             }
             Authentication authentication = authenticationManager.authenticate(unauthenticated(email, password));
             UserDTO loggedInUser = getLoggedInUser(authentication);
             if(!loggedInUser.isUsingMfa()) {
-                publisher.publishEvent(new NewUserEvent(email, LOGIN_ATTEMPT_SUCCESS));
+                publisher.publishEvent(new NewUserEvent( LOGIN_ATTEMPT_SUCCESS,testUser.getId()));
             }
             return loggedInUser;
         } catch (Exception exception) {
-            publisher.publishEvent(new NewUserEvent(email, LOGIN_ATTEMPT_FAILURE));
+            publisher.publishEvent(new NewUserEvent(LOGIN_ATTEMPT_FAILURE,testUser.getId()));
             processError(request, response, exception);
             throw new ApiException(exception.getMessage());
         }

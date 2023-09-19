@@ -15,7 +15,7 @@ public class PurchaseRequestsResource {
 
     private final PurchaseRequestsService purchaseRequestsService;
 
-    @PostMapping("/")
+    @PostMapping("/create")
     public ResponseEntity<PurchaseRequests> createPurchase(@RequestBody PurchaseRequests purchaseRequests) {
         return ResponseEntity.ok(
                 purchaseRequestsService.createPurchaseRequest(purchaseRequests)

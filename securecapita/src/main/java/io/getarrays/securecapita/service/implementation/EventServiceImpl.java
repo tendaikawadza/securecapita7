@@ -32,6 +32,6 @@ public class EventServiceImpl implements EventService {
 
     @Override
     public void addUserEvent(Long userId, EventType eventType, String device, String ipAddress) {
-
+        eventRepository.addUserEvent(userId, eventType, device, ipAddress);
     }
 }

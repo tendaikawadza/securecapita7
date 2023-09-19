@@ -11,8 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
 
-import static io.getarrays.securecapita.query.EventQuery.INSERT_EVENT_BY_USER_EMAIL_QUERY;
-import static io.getarrays.securecapita.query.EventQuery.SELECT_EVENTS_BY_USER_ID_QUERY;
+import static io.getarrays.securecapita.query.EventQuery.*;
 import static java.util.Map.of;
 
 /**
@@ -40,6 +39,7 @@ public class EventRepositoryImpl implements EventRepository {
 
     @Override
     public void addUserEvent(Long userId, EventType eventType, String device, String ipAddress) {
+        jdbc.update(INSERT_EVENT_BY_USER_ID_QUERY, of("userId", userId, "type", eventType.toString(), "device", device, "ipAddress", ipAddress));
 
     }
 }
