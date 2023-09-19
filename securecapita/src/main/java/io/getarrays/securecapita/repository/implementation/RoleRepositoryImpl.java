@@ -12,6 +12,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
 
+
+import static io.getarrays.securecapita.enumeration.RoleType.ROLE_ADMINISTRATION;
 import static io.getarrays.securecapita.enumeration.RoleType.ROLE_USER;
 import static io.getarrays.securecapita.query.RoleQuery.*;
 import static java.util.Map.of;

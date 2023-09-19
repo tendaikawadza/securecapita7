@@ -44,17 +44,6 @@ public class AdminPurchaseAuthorizationImpl implements AdminPurchaseAuthorizatio
 
 
 
-
-
-
-
-
-
-
-
-
-
-
     @Override
     public List list() {
         return null;
