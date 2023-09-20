@@ -133,24 +133,47 @@ DROP TABLE IF EXISTS PurchaseRequest;
 CREATE TABLE PurchaseRequest
 (
     id              BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    user_id         BIGINT UNSIGNED NOT NULL,
     productName     VARCHAR(50) NOT NULL,
     date            DATETIME NOT NULL,
     receiverEmail  VARCHAR(150) NOT NULL,
-
     signature       VARCHAR(255) NOT NULL,
     FOREIGN KEY (user_id) REFERENCES Users (id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
---
---CREATE TABLE ReceivedPurchaseRequest
---(
---    id              BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
---  //i want to link user       receiver email
---    FOREIGN KEY ( receiverEmail) REFERENCES Users (id) ON DELETE CASCADE ON UPDATE CASCADE
---);
---
---
---
+
+DROP TABLE IF EXISTS User;
+
+CREATE TABLE UserPurchaseRequest
+(
+
+   id      BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+   user_id BIGINT UNSIGNED NOT NULL,
+    event_id   BIGINT UNSIGNED NOT NULL,
+    device     VARCHAR(100) DEFAULT NULL,
+    ip_address VARCHAR(100) DEFAULT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES Users (id) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (event_id) REFERENCES Events (id) ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+
+
+DROP TABLE IF EXISTS HeadProcurementAuthorisation;
+
+CREATE TABLE HeadProcurementAuthorisation
+(
+
+   id      BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+   user_id BIGINT UNSIGNED NOT NULL,
+    event_id   BIGINT UNSIGNED NOT NULL,
+    device     VARCHAR(100) DEFAULT NULL,
+    ip_address VARCHAR(100) DEFAULT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES Users (id) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (event_id) REFERENCES Events (id) ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+
+
 
 

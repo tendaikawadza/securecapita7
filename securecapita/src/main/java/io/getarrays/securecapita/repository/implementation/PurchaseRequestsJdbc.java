@@ -79,7 +79,7 @@ public class PurchaseRequestsJdbc implements PurchaseRequestsRepository<Purchase
 
     private SqlParameterSource getSqlParameterSource(PurchaseRequests purchaseRequests) {
         return new MapSqlParameterSource()
-                .addValue("userId", purchaseRequests.getUserId())
+
                 .addValue("productName", purchaseRequests.getProductName())
                 .addValue("date", purchaseRequests.getDate())
                 .addValue("receiverEmail",purchaseRequests.getReceiverEmail())

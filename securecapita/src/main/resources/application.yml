@@ -40,5 +40,5 @@ spring:
           max-request-size: 215MB
   sql:
     init:
-      mode: never
+      mode: always
       continue-on-error: false

@@ -20,15 +20,11 @@ import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_DEFAULT;
 @JsonInclude(NON_DEFAULT)
 public class PurchaseRequests {
     private Long id;;
-    private Long userId;
     private String productName;
     private Date date;
     private String productCode;
     private int Quantity;
     private String receiverEmail;
     private String signature;
-    private String fileName;
-    private String fileType;
-    @Lob
-    private byte[] data;
+
 }
